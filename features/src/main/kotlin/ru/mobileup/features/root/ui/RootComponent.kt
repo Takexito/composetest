@@ -2,6 +2,7 @@ package ru.mobileup.features.root.ui
 
 import com.arkivanov.decompose.router.RouterState
 import ru.mobileup.core.message.ui.MessageComponent
+import ru.mobileup.features.coins.ui.CoinComponent
 import ru.mobileup.features.pokemons.ui.PokemonsComponent
 
 interface RootComponent {
@@ -12,5 +13,6 @@ interface RootComponent {
 
     sealed interface Child {
         class Pokemons(val component: PokemonsComponent) : Child
+        class Crypto(val component: CoinComponent): Child
     }
 }
