@@ -11,5 +11,5 @@ data class Coin(
     val id: CoinId,
     val name: String,
     val symbol: String,
-    val price: Int
+    val price: Double
 )

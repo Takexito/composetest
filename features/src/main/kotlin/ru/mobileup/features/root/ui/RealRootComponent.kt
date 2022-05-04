@@ -10,6 +10,7 @@ import kotlinx.parcelize.Parcelize
 import ru.mobileup.core.ComponentFactory
 import ru.mobileup.core.message.createMessagesComponent
 import ru.mobileup.core.utils.toComposeState
+import ru.mobileup.features.coins.createCoinComponent
 import ru.mobileup.features.pokemons.createPokemonsComponent
 
 class RealRootComponent(
@@ -18,7 +19,7 @@ class RealRootComponent(
 ) : ComponentContext by componentContext, RootComponent {
 
     private val router = router<ChildConfig, RootComponent.Child>(
-        initialConfiguration = ChildConfig.Pokemons,
+        initialConfiguration = ChildConfig.Coins,
         handleBackButton = true,
         childFactory = ::createChild
     )
@@ -38,11 +39,19 @@ class RealRootComponent(
                     componentFactory.createPokemonsComponent(componentContext)
                 )
             }
+            ChildConfig.Coins -> {
+                RootComponent.Child.Crypto(
+                    componentFactory.createCoinComponent(componentContext)
+                )
+            }
         }
 
     private sealed interface ChildConfig : Parcelable {
 
         @Parcelize
         object Pokemons : ChildConfig
+
+        @Parcelize
+        object Coins: ChildConfig
     }
 }
