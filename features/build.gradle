@@ -53,6 +53,10 @@ dependencies {
     implementation libs.coil
     debugImplementation libs.compose.tooling
 
+    // Fix compose 1.2.0-alpha bug with preview on library modules
+    // https://issuetracker.google.com/issues/227767363?pli=1
+    debugImplementation "androidx.customview:customview-poolingcontainer:1.0.0-alpha01"
+
     // DI
     implementation libs.koin.android
 
