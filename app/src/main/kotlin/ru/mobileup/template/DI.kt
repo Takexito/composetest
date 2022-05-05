@@ -7,5 +7,5 @@ import ru.mobileup.features.pokemons.pokemonsModule
 val allModules = listOf(
     coreModule(BuildConfig.BACKEND_URL),
     pokemonsModule,
-    coinModule
+    coinModule("https://api.coinlore.net")
 )

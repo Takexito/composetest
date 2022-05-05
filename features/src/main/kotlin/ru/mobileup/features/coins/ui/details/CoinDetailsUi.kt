@@ -39,9 +39,7 @@ fun CoinDetailsUi(
                         markets = coin.markets,
                     )
                 }
-
             }
-
         }
     }
 }
@@ -56,20 +54,20 @@ fun CoinDetailed(
             .fillMaxWidth()
     ) {
         Row(
-            modifier = modifier
+            modifier = Modifier
                 .padding(horizontal = 16.dp, vertical = 16.dp)
-                .fillMaxWidth()
+                .fillMaxWidth(),
+            horizontalArrangement = Arrangement.SpaceBetween
         ) {
             Text(
                 text = coin.rank.toString(),
                 modifier = Modifier
-                    .width(60.dp)
+                    .defaultMinSize(minWidth = 60.dp)
             )
 
             Text(
                 modifier = Modifier
-                    .padding(horizontal = 16.dp)
-                    .weight(1f),
+                    .padding(horizontal = 16.dp),
                 maxLines = 2,
                 overflow = TextOverflow.Ellipsis,
                 text = coin.name,
@@ -77,9 +75,9 @@ fun CoinDetailed(
 
             Text(
                 modifier = Modifier
-                    .width(80.dp),
-                text = coin.priceUsd.toString(),
-                textAlign = TextAlign.End
+                    .defaultMinSize(minWidth = 80.dp),
+                text = coin.price.toString(),
+                textAlign = TextAlign.End,
             )
         }
     }
@@ -95,7 +93,7 @@ fun CoinMarketList(
     ) {
         itemsIndexed(
             items = markets,
-            key = { _, market -> market.name }
+            key = { _, market -> market.id }
         ) { index, market ->
 
             CoinMarket(market = market)
@@ -119,14 +117,13 @@ fun CoinMarket(
         Row(
             modifier = modifier
                 .padding(horizontal = 16.dp, vertical = 16.dp)
-                .fillMaxWidth()
+                .fillMaxWidth(),
+            horizontalArrangement = Arrangement.SpaceBetween
         ) {
             Text(
                 modifier = Modifier
-                    .padding(horizontal = 16.dp)
-                    .align(Alignment.CenterVertically)
-                    .weight(1f),
-                maxLines = 2,
+                    .align(Alignment.CenterVertically),
+                maxLines = 1,
                 overflow = TextOverflow.Ellipsis,
                 text = market.name,
             )
