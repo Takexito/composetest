@@ -1,6 +1,7 @@
 package ru.mobileup.features.coins.data
 
-import me.aartikov.replica.algebra.combine
+import kotlinx.coroutines.delay
+import me.aartikov.replica.algebra.combineEager
 import me.aartikov.replica.algebra.withKey
 import me.aartikov.replica.client.ReplicaClient
 import me.aartikov.replica.keyed.KeyedPhysicalReplica
@@ -28,10 +29,12 @@ class RealCoinRepository(
     }
 
     override fun coinDetailedWithMarkets(coinId: CoinId): Replica<CoinDetails> {
-        return combine(
+        return combineEager(
             coinDetailed().withKey(coinId),
             coinMarkets().withKey(coinId)
         ) { detailed, markets ->
+            if (detailed == null) return@combineEager CoinDetails.emptyWithMarkets(markets)
+            if (markets == null) return@combineEager detailed
             detailed.copy(markets = markets)
         }
     }

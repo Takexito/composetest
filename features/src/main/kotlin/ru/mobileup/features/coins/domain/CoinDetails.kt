@@ -6,7 +6,19 @@ data class CoinDetails(
     val rank: Int,
     val price: Double,
     val markets: List<CoinMarket>
-)
+) {
+    companion object {
+        fun emptyWithMarkets(markets: List<CoinMarket>?): CoinDetails {
+            return CoinDetails(
+                id = CoinId("0"),
+                name = "",
+                rank = 0,
+                price = 0.0,
+                markets = markets ?: emptyList()
+            )
+        }
+    }
+}
 
 fun CoinDetails.newCoinDetails(
     id: CoinId = this.id,
