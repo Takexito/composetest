@@ -16,7 +16,6 @@ fun <T : Any> LceWidget(
 ) {
     val (loading, data, error) = state
     when {
-        data == null -> emptyContent?.invoke()
 
         data != null -> content(data, loading)
 
@@ -27,5 +26,8 @@ fun <T : Any> LceWidget(
             onRetryClick = onRetryClick,
             modifier = modifier
         )
+
+        data == null -> emptyContent?.invoke()
+
     }
 }
