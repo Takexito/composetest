@@ -5,7 +5,7 @@ import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.flow
 import ru.mobileup.features.coins.domain.*
 
-class FakeCoinRepository : CoinRepository {
+class FakeFlowCoinRepository : FlowCoinRepository {
     override fun coinList(): Flow<List<Coin>> {
         val coin123 = Coin(
             CoinId("123"),

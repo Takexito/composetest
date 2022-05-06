@@ -1,6 +1,5 @@
 package ru.mobileup.features.coins.ui.list
 
-import androidx.compose.runtime.State
 import me.aartikov.replica.single.Loadable
 import ru.mobileup.features.coins.domain.Coin
 import ru.mobileup.features.coins.domain.CoinId

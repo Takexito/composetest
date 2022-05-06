@@ -2,24 +2,23 @@ package ru.mobileup.features.coins.ui.details
 
 import androidx.compose.runtime.getValue
 import com.arkivanov.decompose.ComponentContext
-import me.aartikov.replica.single.Loadable
-import me.aartikov.replica.single.Replica
+import kotlinx.coroutines.flow.Flow
 import ru.mobileup.core.error_handling.ErrorHandler
-import ru.mobileup.core.utils.observe
+import ru.mobileup.core.utils.componentCoroutineScope
 import ru.mobileup.features.coins.domain.CoinDetails
+import ru.mobileup.features.coins.ui.utils.toComposeState
 
-class RealCoinDetailsComponent(
+class RealFlowCoinDetailsComponent(
     componentContext: ComponentContext,
-    private val coinDetailsReplica: Replica<CoinDetails>,
+    coinDetails: Flow<CoinDetails>,
     errorHandler: ErrorHandler
 ) : ComponentContext by componentContext, CoinDetailsComponent {
-
-    override val cryptoState: Loadable<CoinDetails> by coinDetailsReplica.observe(
-        lifecycle,
+    override val cryptoState by coinDetails.toComposeState(
+        componentCoroutineScope(),
         errorHandler
     )
 
     override fun onRetryClick() {
-        coinDetailsReplica.refresh()
+
     }
 }
