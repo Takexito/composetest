@@ -9,7 +9,7 @@ import ru.mobileup.core.message.ui.FakeMessageComponent
 import ru.mobileup.core.message.ui.MessageUi
 import ru.mobileup.core.theme.AppTheme
 import ru.mobileup.core.utils.createFakeRouterState
-import ru.mobileup.features.coins.ui.CoinsUi
+import ru.mobileup.features.collection.ui.CollectionUi
 import ru.mobileup.features.pokemons.ui.FakePokemonsComponent
 import ru.mobileup.features.pokemons.ui.PokemonsUi
 
@@ -21,7 +21,11 @@ fun RootUi(
     Children(component.routerState, modifier) { child ->
         when (val instance = child.instance) {
             is RootComponent.Child.Pokemons -> PokemonsUi(instance.component)
-            is RootComponent.Child.Crypto -> CoinsUi(instance.component)
+//            is RootComponent.Child.Crypto -> CoinsUi(instance.component)
+            is RootComponent.Child.Crypto -> CollectionUi(
+                listOf(Any(), Any(), Any()),
+                listOf(Any(), Any(), Any())
+            )
         }
     }
 
