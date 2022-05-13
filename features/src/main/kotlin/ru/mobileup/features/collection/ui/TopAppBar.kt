@@ -19,12 +19,12 @@ fun CollectionTopAppBar(
     buttonClick: (buttonId: String) -> Unit,
 ) {
     TopAppBar(
-        modifier = modifier,
+        modifier = modifier.padding(16.dp),
         backgroundColor = Color.Transparent,
         elevation = 0.dp
     ) {
         TopBarContentButtons(
-            modifier = Modifier.padding(16.dp),
+            modifier = Modifier,
             buttons = buttons,
             buttonClick = buttonClick
         )
