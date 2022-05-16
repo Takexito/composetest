@@ -19,7 +19,7 @@ import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import ru.mobileup.core.R
-import ru.mobileup.core.theme.CollectionHeaderShape
+import ru.mobileup.core.theme.CollectionShape
 
 typealias CollectionItemType = Any
 
@@ -89,7 +89,7 @@ fun CollectionCardItem(
                     .wrapContentSize()
                     .padding(titleConfig.titlePaddingValues),
                 fontSize = titleConfig.titleFontSize,
-                text = titleConfig.title,
+                text = titleConfig.title
             )
         }
     }
@@ -106,6 +106,6 @@ class CollectionCardItemCardConfig(
     val backgroundPainter: Painter,
     val contentDescription: String = "",
     val aspectRatio: Float = 3f / 2f,
-    val shape: Shape = CollectionHeaderShape.medium,
+    val shape: Shape = CollectionShape.medium,
     val border: BorderStroke = BorderStroke(1.dp, Color.Gray),
 )

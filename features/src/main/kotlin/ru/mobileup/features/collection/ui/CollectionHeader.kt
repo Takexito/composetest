@@ -18,7 +18,10 @@ import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import ru.mobileup.core.theme.CollectionHeaderShape
+import ru.mobileup.core.theme.CollectionShape
+import ru.mobileup.core.theme.disabledColor
+import ru.mobileup.core.theme.fourthColor
+import ru.mobileup.core.theme.textColor
 import ru.mobileup.features.R
 
 typealias HeaderStatistic = Any
@@ -26,10 +29,10 @@ typealias HeaderStatistic = Any
 @Composable
 fun CollectionHeader(
     modifier: Modifier = Modifier,
-    shape: Shape = CollectionHeaderShape.medium,
+    shape: Shape = CollectionShape.medium,
     backgroundColor: Color = Color.Transparent,
-    border: BorderStroke = BorderStroke(1.dp, Color.LightGray),
-    separateBoarder: BorderStroke = BorderStroke(0.5.dp, Color.LightGray), // TODO: rename
+    border: BorderStroke = BorderStroke(2.dp, Color.Gray.copy(alpha = 0.1f)),
+    separateBoarder: BorderStroke = BorderStroke(1.dp, Color.Gray.copy(alpha = 0.1f)), // TODO: rename
     contentPaddings: PaddingValues = PaddingValues(vertical = 16.dp),
     statistics: List<HeaderStatistic>,
     onItemClick: (pos: Int) -> Unit,
@@ -90,7 +93,8 @@ fun CollectionHeaderItem(
                     .height(iconConfig.iconSize)
                     .fillMaxWidth(),
                 painter = iconConfig.iconPainter,
-                contentDescription = iconConfig.contentDescription
+                contentDescription = iconConfig.contentDescription,
+                tint = fourthColor
             )
             Spacer(
                 modifier = Modifier
@@ -101,7 +105,8 @@ fun CollectionHeaderItem(
                 modifier = Modifier.fillMaxWidth(),
                 text = textConfig.text,
                 textAlign = TextAlign.Center,
-                fontSize = textConfig.fontSize
+                fontSize = textConfig.fontSize,
+                color = textColor
             )
         }
     }

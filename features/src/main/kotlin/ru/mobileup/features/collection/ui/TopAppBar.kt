@@ -11,6 +11,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
+import ru.mobileup.core.theme.disabledColor
 
 @Composable
 fun CollectionTopAppBar(
@@ -67,7 +68,8 @@ fun TopBarButton(
         Icon(
             modifier = Modifier.size(config.iconSize),
             painter = config.iconPainter,
-            contentDescription = config.contentDescription
+            contentDescription = config.contentDescription,
+            tint = disabledColor
         )
     }
 }

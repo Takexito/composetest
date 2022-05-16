@@ -11,6 +11,8 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
+import ru.mobileup.core.theme.disabledColor
+import ru.mobileup.core.theme.primaryColor
 
 // TODO: add cutout button
 @Composable
@@ -36,8 +38,8 @@ fun BottomBar(
 @Composable
 fun BottomBarContentIcons(
     backgroundColor: Color,
-    selectedIconTint: Color = Color.Black,
-    unSelectedIconTint: Color = Color.LightGray,
+    selectedIconTint: Color = primaryColor,
+    unSelectedIconTint: Color = disabledColor,
     items: List<BottomBarItemConfig>,
     onItemClick: (pos: Int) -> Unit
 ) {

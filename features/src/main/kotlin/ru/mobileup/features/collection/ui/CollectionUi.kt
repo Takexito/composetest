@@ -11,6 +11,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import ru.mobileup.core.theme.backgroundColor
 import ru.mobileup.features.R
 
 //@Preview(name = "NEXUS_7", device = Devices.NEXUS_7)
@@ -68,6 +69,7 @@ fun CollectionUi(collectionList: List<CollectionItemType>, statisticList: List<H
     )
 
     Scaffold(
+        backgroundColor = backgroundColor,
         topBar = {
             CollectionTopAppBar(
                 buttons = topBarButtons
