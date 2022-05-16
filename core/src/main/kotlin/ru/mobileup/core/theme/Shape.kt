@@ -10,6 +10,8 @@ val Shapes = Shapes(
     large = RoundedCornerShape(0.dp)
 )
 
-val CollectionHeaderShape = Shapes(
+val CollectionShape = Shapes(
+    small = RoundedCornerShape(24.dp),
     medium = RoundedCornerShape(24.dp),
+    large = RoundedCornerShape(24.dp),
 )
