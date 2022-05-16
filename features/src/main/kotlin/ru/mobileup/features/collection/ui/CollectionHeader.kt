@@ -19,12 +19,11 @@ import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import ru.mobileup.core.theme.CollectionShape
-import ru.mobileup.core.theme.disabledColor
 import ru.mobileup.core.theme.fourthColor
 import ru.mobileup.core.theme.textColor
-import ru.mobileup.features.R
+import ru.mobileup.features.collection.domain.Statistic
 
-typealias HeaderStatistic = Any
+typealias HeaderStatistic = Statistic
 
 @Composable
 fun CollectionHeader(
@@ -32,7 +31,10 @@ fun CollectionHeader(
     shape: Shape = CollectionShape.medium,
     backgroundColor: Color = Color.Transparent,
     border: BorderStroke = BorderStroke(2.dp, Color.Gray.copy(alpha = 0.1f)),
-    separateBoarder: BorderStroke = BorderStroke(1.dp, Color.Gray.copy(alpha = 0.1f)), // TODO: rename
+    separateBoarder: BorderStroke = BorderStroke(
+        1.dp,
+        Color.Gray.copy(alpha = 0.1f)
+    ), // TODO: rename
     contentPaddings: PaddingValues = PaddingValues(vertical = 16.dp),
     statistics: List<HeaderStatistic>,
     onItemClick: (pos: Int) -> Unit,
@@ -53,9 +55,9 @@ fun CollectionHeader(
                         .weight(1f)
                         .fillMaxWidth(),
                     iconConfig = CollectionHeaderItemIconConfig(
-                        iconPainter = painterResource(id = R.drawable.ic_baseline_attach_money_24),
+                        iconPainter = painterResource(id = statistic.type.getIconId()),
                     ),
-                    textConfig = CollectionHeaderItemTextConfig(text = (1000 * index).toString()),
+                    textConfig = CollectionHeaderItemTextConfig(text = statistic.value.toString()),
                     backgroundColor = backgroundColor,
                     border = separateBoarder,
                     contentPaddings = contentPaddings,

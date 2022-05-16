@@ -13,6 +13,9 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import ru.mobileup.core.theme.backgroundColor
 import ru.mobileup.features.R
+import ru.mobileup.features.collection.domain.CollectionCard
+import ru.mobileup.features.collection.domain.Statistic
+import ru.mobileup.features.collection.domain.StatisticType
 
 //@Preview(name = "NEXUS_7", device = Devices.NEXUS_7)
 //@Preview(name = "NEXUS_7_2013", device = Devices.NEXUS_7_2013)
@@ -37,7 +40,19 @@ import ru.mobileup.features.R
 @Preview
 @Composable
 fun CollectionUiFake() {
-    CollectionUi(listOf(Any(), Any(), Any()), listOf(Any(), Any(), Any()))
+    CollectionUi(
+        collectionList = listOf(
+            CollectionCard("Animal", ""),
+            CollectionCard("Nature", ""),
+            CollectionCard("Image", ""),
+            CollectionCard("People", "")
+        ),
+        statisticList = listOf(
+            Statistic(1000, StatisticType.DOLLARS),
+            Statistic(200, StatisticType.COIN),
+            Statistic(10, StatisticType.NUMBER)
+        )
+    )
 }
 
 @Composable

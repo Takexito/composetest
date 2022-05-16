@@ -9,6 +9,9 @@ import ru.mobileup.core.message.ui.FakeMessageComponent
 import ru.mobileup.core.message.ui.MessageUi
 import ru.mobileup.core.theme.AppTheme
 import ru.mobileup.core.utils.createFakeRouterState
+import ru.mobileup.features.collection.domain.CollectionCard
+import ru.mobileup.features.collection.domain.Statistic
+import ru.mobileup.features.collection.domain.StatisticType
 import ru.mobileup.features.collection.ui.CollectionUi
 import ru.mobileup.features.pokemons.ui.FakePokemonsComponent
 import ru.mobileup.features.pokemons.ui.PokemonsUi
@@ -23,8 +26,17 @@ fun RootUi(
             is RootComponent.Child.Pokemons -> PokemonsUi(instance.component)
 //            is RootComponent.Child.Crypto -> CoinsUi(instance.component)
             is RootComponent.Child.Crypto -> CollectionUi(
-                listOf(Any(), Any(), Any()),
-                listOf(Any(), Any(), Any())
+                collectionList = listOf(
+                    CollectionCard("Animal", ""),
+                    CollectionCard("Nature", ""),
+                    CollectionCard("Image", ""),
+                    CollectionCard("People", "")
+                ),
+                statisticList = listOf(
+                    Statistic(1000, StatisticType.DOLLARS),
+                    Statistic(200, StatisticType.COIN),
+                    Statistic(10, StatisticType.NUMBER)
+                )
             )
         }
     }

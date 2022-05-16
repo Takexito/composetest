@@ -20,8 +20,9 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import ru.mobileup.core.R
 import ru.mobileup.core.theme.CollectionShape
+import ru.mobileup.features.collection.domain.CollectionCard
 
-typealias CollectionItemType = Any
+typealias CollectionItemType = CollectionCard
 
 @OptIn(ExperimentalMaterialApi::class)
 @Composable
@@ -45,7 +46,7 @@ fun CollectionCardList(
                     backgroundPainter = painterResource(id = R.drawable.ic_launcher_background)
                 ),
                 titleConfig = CollectionCardItemTitleConfig(
-                    title = "Title $index",
+                    title = collection.title,
                 ),
                 onClick = { onItemClick(collection, index) }
             )
