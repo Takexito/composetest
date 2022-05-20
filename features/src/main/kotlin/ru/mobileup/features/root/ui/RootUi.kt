@@ -13,6 +13,7 @@ import ru.mobileup.features.collection.domain.CollectionCard
 import ru.mobileup.features.collection.domain.Statistic
 import ru.mobileup.features.collection.domain.StatisticType
 import ru.mobileup.features.collection.ui.CollectionUi
+import ru.mobileup.features.collection.ui.card.CardUi
 import ru.mobileup.features.pokemons.ui.FakePokemonsComponent
 import ru.mobileup.features.pokemons.ui.PokemonsUi
 
@@ -25,6 +26,7 @@ fun RootUi(
         when (val instance = child.instance) {
             is RootComponent.Child.Pokemons -> PokemonsUi(instance.component)
 //            is RootComponent.Child.Crypto -> CoinsUi(instance.component)
+            is RootComponent.Child.Crypto -> CardUi()
             is RootComponent.Child.Crypto -> CollectionUi(
                 collectionList = listOf(
                     CollectionCard("Animal", ""),

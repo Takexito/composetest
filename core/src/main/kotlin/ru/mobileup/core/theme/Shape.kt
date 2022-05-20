@@ -13,5 +13,11 @@ val Shapes = Shapes(
 val CollectionShape = Shapes(
     small = RoundedCornerShape(24.dp),
     medium = RoundedCornerShape(24.dp),
+    large = RoundedCornerShape(100.dp),
+)
+
+val ProgressShape = Shapes(
+    small = RoundedCornerShape(24.dp),
+    medium = RoundedCornerShape(24.dp),
     large = RoundedCornerShape(24.dp),
 )

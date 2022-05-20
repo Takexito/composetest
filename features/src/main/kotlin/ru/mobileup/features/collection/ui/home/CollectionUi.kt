@@ -16,6 +16,10 @@ import ru.mobileup.features.R
 import ru.mobileup.features.collection.domain.CollectionCard
 import ru.mobileup.features.collection.domain.Statistic
 import ru.mobileup.features.collection.domain.StatisticType
+import ru.mobileup.features.collection.ui.home.BottomBar
+import ru.mobileup.features.collection.ui.home.BottomBarItemConfig
+import ru.mobileup.features.collection.ui.home.CollectionTopAppBar
+import ru.mobileup.features.collection.ui.home.TopBarButtonConfig
 
 //@Preview(name = "NEXUS_7", device = Devices.NEXUS_7)
 //@Preview(name = "NEXUS_7_2013", device = Devices.NEXUS_7_2013)

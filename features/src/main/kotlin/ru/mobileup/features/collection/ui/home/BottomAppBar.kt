@@ -1,4 +1,4 @@
-package ru.mobileup.features.collection.ui
+package ru.mobileup.features.collection.ui.home
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
