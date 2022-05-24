@@ -1,6 +1,8 @@
 package ru.mobileup.features.collection.ui.card
 
 import androidx.compose.foundation.Canvas
+import androidx.compose.foundation.layout.*
+import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.geometry.CornerRadius
@@ -10,7 +12,56 @@ import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.graphics.*
 import androidx.compose.ui.graphics.drawscope.DrawScope
 import androidx.compose.ui.graphics.drawscope.clipPath
+import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
+import ru.mobileup.core.theme.ProgressShape
 
+@Preview
+@Composable
+fun RoundProgressBoxTest() {
+    RoundProgressBox(
+        percent = 99f,
+        shape = ProgressShape.medium,
+        color = Color.Red,
+        strokeWidth = 20f,
+        startPoint = 0.5f
+    ) {
+        Column(
+        ) {
+            Text(text = 10.toString(), color = Color.Red)
+            Spacer(modifier = Modifier.height(8.dp))
+            Text(text = 15.toString())
+        }
+    }
+}
+
+@Composable
+fun RoundProgressBox(
+    modifier: Modifier = Modifier,
+    boxModifier: Modifier = Modifier,
+    percent: Float,
+    shape: Shape,
+    color: Color,
+    strokeWidth: Float,
+    startPoint: Float,
+    content: @Composable () -> Unit
+) {
+    Box(
+        modifier = Modifier
+    ) {
+        RoundProgress(
+            modifier = modifier,
+            percent = percent,
+            shape = shape,
+            color = color,
+            strokeWidth = strokeWidth,
+            startPoint = startPoint,
+        )
+        Box(boxModifier.padding(all = strokeWidth.dp)) {
+            content()
+        }
+    }
+}
 
 @Composable
 fun RoundProgress(
@@ -22,11 +73,14 @@ fun RoundProgress(
     startPoint: Float
 ) {
     Canvas(modifier = modifier
-        .graphicsLayer(alpha = 0.99f),
+        .graphicsLayer(alpha = 0.99f)
+        .fillMaxSize(),
         onDraw = {
 
             val outline = shape.createOutline(size, layoutDirection, this)
-            val rect = (outline as Outline.Rounded).roundRect
+//            require(outline is Outline.Rounded)
+            if (outline !is Outline.Rounded) return@Canvas
+            val rect = outline.roundRect
             val path = Path()
             path.addOutline(outline)
 
